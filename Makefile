@@ -20,6 +20,7 @@ tag_latest:
 
 push_hub:
 	echo "TRIGGER_KEY" ${TRIGGERKEY}
+	curl -H "Content-Type: application/json" --data '{"source_type": "Tag", "source_name": "$(VERSION)"}' -X POST https://registry.hub.docker.com/u/jinwoo/nginx/trigger/${TRIGGERKEY}/
 	cat .Dockerfile | sed  "s/__PHP_VERSION__/$(VERSION)/g"   > Dockerfile
 	git add .
 	git commit -m "$(NAME):$(VERSION) by Makefile"
