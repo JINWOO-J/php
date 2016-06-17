@@ -1,6 +1,7 @@
 REPO = dr.ytlabs.co.kr
 NAME = php
 VERSION = 5.6.22
+include ENVAR
 
 .PHONY: all build push test tag_latest release ssh
 
