@@ -9,7 +9,6 @@ include ENVAR
 all: build
 
 build:
-	cat .Dockerfile | sed  "s/__PHP_VERSION__/$(VERSION)/g"   > Dockerfile
 	docker build --no-cache --rm=true --build-arg PHP_VERSION=$(VERSION) -t $(NAME):$(VERSION) .
 
 push:
@@ -26,7 +25,6 @@ tag_latest:
 
 build_hub:
 	echo "TRIGGER_KEY" ${TRIGGERKEY}
-	cat .Dockerfile | sed  "s/__PHP_VERSION__/$(VERSION)/g"   > Dockerfile
 	git add .
 	git commit -m "$(NAME):$(VERSION) by Makefile"
 	git tag -a "$(VERSION)" -m "$(VERSION) by Makefile"

@@ -26,6 +26,39 @@ class PhpFpmEnvironment {
         'HOME',        // Set correctly by php-fpm
         'TERM',        // Not pertinent in server context
         'MYSQL_ENV_MYSQL_ROOT_PASSWORD', // from --link …:mysql
+        'HOSTNAME',
+		'PHP_INI_DIR',
+		'PHP5_KEY',
+		'FPM_GROUP',
+		'LS_COLORS',
+		'PHP_LIB',
+		'DOCKERIZE_VERSION',
+		'PATH',
+		'PHP7_KEY',
+		'PWD',
+		'SHLVL',
+		'PHP_BUILD_DEPS',
+		'PHALCON_VER',
+		'affinity:container',
+		'LESSOPEN',
+		'FPM_LISTEN',
+		'LESSCLOSE',
+		'PHP_VERSION',
+		'PHP_EXTRA_CONFIGURE_ARGS',
+		'FPM_USER',
+		'OLDPWD',
+		'PHP_SELF',
+		'SCRIPT_NAME',
+		'SCRIPT_FILENAME',
+		'PATH_TRANSLATED',
+		'DOCUMENT_ROOT',
+		'REQUEST_TIME_FLOAT',
+		'REQUEST_TIME',
+		'argv',
+		'argc',
+		'TMP',
+		'TEMP',
+		'TMPDIR'
     ];
 
     /**
@@ -37,7 +70,7 @@ class PhpFpmEnvironment {
     public static function getEnvironmentVariables () {
         $variables = [];
 
-        foreach ($_ENV as $key => $value) {
+        foreach ($_SERVER as $key => $value) {
             if (!static::mustIgnoreVariable($key)) {
 	            $variables[$key] = $value;
             }

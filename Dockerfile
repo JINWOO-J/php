@@ -9,10 +9,10 @@ MAINTAINER JINWOO <jinwoo@yellotravel.com>
 #
 RUN ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
-ENV PHP_VERSION 5.6.22
+ARG PHP_VERSION
+ENV PHP_VERSION $PHP_VERSION
 RUN echo "PHP version = ${PHP_VERSION}"
 
-ENV PHP_VERSION 5.6.22
 ENV DOCKERIZE_VERSION v0.2.0
 ENV PHP_LIB redis-2.2.8 yaml-1.2.0 amqp-1.7.0 memcached-2.2.0 apcu-4.0.11
 ENV PHALCON_VER 2.0.12
