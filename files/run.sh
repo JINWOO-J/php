@@ -11,7 +11,6 @@ then
     echo "USE the dockerize template";
     dockerize -template /etc/php/php-fpm.tmpl > /etc/php/php-fpm.conf
 fi
-/usr/local/sbin/php-fpm-env  >/usr/local/etc/envvars
-source /usr/local/etc/envvars
-php-fpm-env > ${PHP_INI_DIR}/php-fpm-env.conf
+
+/usr/local/sbin/php-fpm-env >> /etc/php/php-fpm.conf
 /usr/local/sbin/php-fpm -c ${PHP_INI_DIR} --nodaemonize

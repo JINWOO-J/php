@@ -15,7 +15,7 @@ RUN echo "PHP version = ${PHP_VERSION}"
 
 ENV DOCKERIZE_VERSION v0.2.0
 ENV PHP_LIB redis-2.2.8 yaml-1.2.0 amqp-1.7.0 memcached-2.2.0 apcu-4.0.11
-ENV PHALCON_VER 2.0.12
+ENV PHALCON_VER 3.0.0
 
 ENV PHP_INI_DIR /etc/php
 
@@ -118,8 +118,8 @@ RUN sh -c "echo 'date.timezone = asia/seoul' >> ${PHP_INI_DIR}/php.ini"
 RUN sed -i 's/short_open_tag = Off/short_open_tag = On/g' ${PHP_INI_DIR}/php.ini
 
 RUN mkdir -p /usr/src/pecl && cd /usr/src/pecl  \
-	&& wget https://github.com/phalcon/cphalcon/archive/phalcon-v${PHALCON_VER}.tar.gz  \
-	&& tar zxvf phalcon-v${PHALCON_VER}.tar.gz && cd /usr/src/pecl/cphalcon-phalcon-v${PHALCON_VER}/build \
+	&& wget https://github.com/phalcon/cphalcon/archive/v${PHALCON_VER}.tar.gz  \
+	&& tar zxvf v${PHALCON_VER}.tar.gz && cd /usr/src/pecl/cphalcon-phalcon-v${PHALCON_VER}/build \
 	&& ./install \
     && echo "extension=phalcon.so" > $PHP_INI_DIR/conf.d/phalcon.ini \
 	&& wget https://launchpad.net/libmemcached/1.0/1.0.18/+download/libmemcached-1.0.18.tar.gz \
