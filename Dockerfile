@@ -119,7 +119,7 @@ RUN sed -i 's/short_open_tag = Off/short_open_tag = On/g' ${PHP_INI_DIR}/php.ini
 
 RUN mkdir -p /usr/src/pecl && cd /usr/src/pecl  \
 	&& wget https://github.com/phalcon/cphalcon/archive/v${PHALCON_VER}.tar.gz  \
-	&& tar zxvf v${PHALCON_VER}.tar.gz && cd /usr/src/pecl/cphalcon-phalcon-v${PHALCON_VER}/build \
+	&& tar zxvf v${PHALCON_VER}.tar.gz && cd /usr/src/pecl/cphalcon-${PHALCON_VER}/build \
 	&& ./install \
     && echo "extension=phalcon.so" > $PHP_INI_DIR/conf.d/phalcon.ini \
 	&& wget https://launchpad.net/libmemcached/1.0/1.0.18/+download/libmemcached-1.0.18.tar.gz \
